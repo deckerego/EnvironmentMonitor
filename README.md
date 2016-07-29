@@ -3,6 +3,7 @@ EnvironmentMonitor
 
 A residential environment monitoring system that records temperature, humidity and moisture around the house.
 
+
 Hardware Punch List
 -------------------
 
@@ -12,6 +13,7 @@ Hardware Punch List
     <td></td>
   </tr>
 </table>
+
 
 Security & OS Setup
 -------------------
@@ -33,14 +35,14 @@ iface wlan0 inet manual
     wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
 ~~~~
 
-It may be a good idea to create a crontab entry to delete old captured videos, e.g. `0 1 * * * find /home/motion -ctime +14 -delete`
-
 To enable I2C communication for temperature and humidity monitoring, follow the I2C instructions from Adafruit available at https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c
+
 
 Hardware Installation
 ---------------------
 
 See https://hackaday.io/project/12908-environment-monitor/instructions for hardware installation
+
 
 Software Installation
 ---------------------
@@ -54,10 +56,10 @@ These installation instructions have been tested with the latest version of Rasp
 5. Edit `/etc/default/motion` and set it to start on boot
 6. Clone this repository or download https://github.com/deckerego/EnvironmentMonitor/archive/master.zip which will include the Bottle webapp and some admin configs/scripts
 7. Install EnvironmentMonitor's dependencies using `sudo pip install -r app/requirements.txt`
-8. Copy the files within the app/ directory into /srv/environment
-9. Change into the /srv/environment/views directory and execute `bower install bootstrap`
+8. Copy the files within the app/ directory into /srv/environmon
+9. Change into the /srv/environmon/views directory and execute `bower install bootstrap`
 10. Copy the service config files from config/etc into the appropriate /etc directory, altering them as needed.
-11. Create a copy of app/config.sample as /srv/environment/config.py, altering config.py to fit your preferences
-12. Enable the webapp with `sudo a2dissite 000-default`, followed by `sudo a2ensite environment`, then start up (or restart) Apache2
-13. Ensure config/etc/init.d/environment has been copied to /etc/init.d, then install it using `sudo update-rc.d environment defaults`
-14. Start the webapp using `sudo service environment start`
+11. Create a copy of app/config.sample as /srv/environmon/config.py, altering config.py to fit your preferences
+12. Enable the webapp with `sudo a2dissite 000-default`, followed by `sudo a2ensite environmon`, then start up (or restart) Apache2
+13. Ensure config/etc/init.d/environmon has been copied to /etc/init.d, then install it using `sudo update-rc.d environmon defaults`
+14. Start the webapp using `sudo service environmon start`

@@ -1,0 +1,5 @@
+check process environmon with pidfile /var/run/environmon.pid
+	start "/usr/sbin/service environmon restart"
+	stop "/usr/sbin/service environmon stop"
+	if failed host localhost port 9004
+	then restart
